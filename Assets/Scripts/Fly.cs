@@ -9,11 +9,10 @@ public class Fly : MonoBehaviour
     private AudioSource audioSource;
 
     public GameManager gameManager;
-    public bool isGameOver = false;
-
     // Start is called before the first frame update
     void Start()
     {
+        gameManager.GameOver();
         rb = GetComponent<Rigidbody2D>();
         audioSource = this.GetComponent<AudioSource>();
     }
@@ -25,17 +24,13 @@ public class Fly : MonoBehaviour
         {
             // Jump
             rb.velocity = new Vector2(0, 4 * velocity);
-            if (isGameOver == false)
-            {
-                audioSource.Play();
-            }
-            
+            audioSource.Play();
         }
         
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isGameOver = gameManager.GameOver();
+        gameManager.GameOver();
     }
 }
