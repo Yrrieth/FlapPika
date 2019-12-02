@@ -23,10 +23,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    public bool GameOver()
     {
         gameOverCanvas.SetActive(true);
         Time.timeScale = 0;
+        return true;
     }
 
     public void Replay()
